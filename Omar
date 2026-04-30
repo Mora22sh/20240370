@@ -1,0 +1,56 @@
+import java.util.*;
+
+
+class Student {
+    private int id;
+    private String name;
+    private int age;
+
+    public Student(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public int getAge() { return age; }
+}
+
+
+class StudentView {
+    public void displayStudent(Student s) {
+        System.out.println("ID: " + s.getId());
+        System.out.println("Name: " + s.getName());
+        System.out.println("Age: " + s.getAge());
+        System.out.println("-------------------");
+    }
+}
+
+
+class StudentController {
+    private List<Student> students = new ArrayList<>();
+    private StudentView view = new StudentView();
+
+    public void addStudent(Student s) {
+        students.add(s);
+    }
+
+    public void showAllStudents() {
+        for (Student s : students) {
+            view.displayStudent(s);
+        }
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        StudentController controller = new StudentController();
+
+        controller.addStudent(new Student(1, "Khaled", 22));
+        controller.addStudent(new Student(2, "Omar", 23));
+
+        controller.showAllStudents();
+    }
+}
